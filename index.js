@@ -37,31 +37,9 @@ function amarillo()
 
 
 
-var pandQ=document.getElementById("keyboard");
-var clicking=document.getElementById("clicks");
-clicking.addEventListener('click',turnOnKeyboard);
-pandQ.addEventListener('click',turnOnMouse);
-pandQ.setAttribute('disabled',false);
 
-function turnOnKeyboard(e)
-{
-    pandQ.removeAttribute('disabled');
-    buttonp1.removeEventListener('click');
-    buttonp2.removeEventListener('click');
 
-    if (e.code=='p')
-    {
-        p1count++;
-        changeLeft.innerText=p1count;
-    }
 
-    else if (e.code=='q')
-    {
-        p2count++;
-        changeRight.innerText=p2count;
-    }
-
-}
 
 
 
@@ -93,5 +71,52 @@ function up2()
     p2count++;
     changeRight.innerText=p2count;
 }
+
+
+addEventListener('load',clickingDefault);   /*set up to have clicking on default*/
+var pandQ=document.getElementById("keyboard");
+var clicking=document.getElementById("clicks");
+clicking.addEventListener('click',turnOffKeyboard);
+pandQ.addEventListener('click',turnOnKeyboard);
+/*
+addEventListener('keydown',readKeyboard);
+*/
+
+function clickingDefault()   /*turns off keyboard on load*/
+{
+    removeEventListener('keydown',readKeyboard);
+    clicking.setAttribute('disabled',true);
+
+}
+
+function turnOnKeyboard()
+{
+    addEventListener('keydown',readKeyboard);
+    buttonp1.removeEventListener('click',up1);
+    buttonp2.removeEventListener('click',up2);
+    clicking.removeAttribute('disabled');
+    /*  pandQ.setAttribute('disabled',true);
+      */
+}
+
+function readKeyboard(e)
+{
+
+    if (e.code==='KeyP')
+    {
+        p1count++;
+        changeLeft.innerText=p1count;
+    }
+
+    else if (e.code==='KeyQ')
+    {
+        p2count++;
+        changeRight.innerText=p2count;
+    }
+
+}
+
+
+
 
 
