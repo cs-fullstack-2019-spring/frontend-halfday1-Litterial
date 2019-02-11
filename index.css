@@ -1,22 +1,22 @@
 
-body
+body   /*body margin*/
 {
  margin: 2% 7%;
 }
-h1
+h1                  /*game title*/
 {
     text-align: center;
 
 }
 
-.container
+.container      /*set up border*/
 {
     display:grid;
     margin:0 10%;
     text-align: center;
 }
 
-aside
+aside     /*player 1*/
 {
  grid-column: 1/4;
     grid-row: 1/6;
@@ -24,7 +24,7 @@ aside
 
 }
 
-section
+section   /*scoreboard*/
 {
 grid-column:4/7;
     grid-row:1/6;
@@ -32,28 +32,28 @@ grid-column:4/7;
 
 }
 
-nav
+nav     /*player2*/
 {
     grid-column: 7/10;
     grid-row:1/6;
     font-size: 80px;
 }
 
-footer
+footer  /*game options*/
 {
  grid-column:1/4;
     grid-row: 6/8;
     font-size:50px;
 }
 
-article
+article   /*background color*/
 {
     grid-column:7/10;
     grid-row:6/8;
     font-size:50px;
 }
 
-.input
+#inputP1,#inputP2   /*button sizes for Player 1 and 2*/
 {
    height:40px;
     width:200px;
