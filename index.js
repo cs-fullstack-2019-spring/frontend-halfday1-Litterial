@@ -95,8 +95,16 @@ function turnOnKeyboard()
     buttonp1.removeEventListener('click',up1);
     buttonp2.removeEventListener('click',up2);
     clicking.removeAttribute('disabled');
-    /*  pandQ.setAttribute('disabled',true);
-      */
+    pandQ.setAttribute('disabled',true);
+}
+
+function turnOffKeyboard()
+{
+    buttonp1.addEventListener('click',up1);
+    buttonp2.addEventListener('click',up2);
+    removeEventListener('keydown',readKeyboard);
+    pandQ.removeAttribute('disabled');
+    clicking.setAttribute('disabled',true);
 }
 
 function readKeyboard(e)
