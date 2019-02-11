@@ -16,20 +16,20 @@ changeYellow.addEventListener('click',amarillo);
 /*functions for background*/
 function rojo()
 {
-    background.classList.add('red');
+    background.classList.toggle('red');
     background.classList.remove('yellow');
     background.classList.remove('blue');
 }
 
 function azul()
 {
-    background.classList.add('blue');
+    background.classList.toggle('blue');
     background.classList.remove('red');
     background.classList.remove('yellow');
 }
 function amarillo()
 {
-    background.classList.add('yellow');
+    background.classList.toggle('yellow');
     background.classList.remove('blue');
     background.classList.remove('red');
 }
@@ -64,16 +64,16 @@ p2count=0;
 /*increments count for players*/
 function up1()
 {
-
     p1count++;
     changeLeft.innerText=p1count;
+
 
     if (p1count>p2count)    /*when player 1 leads*/
     {
         scoreKeeper.innerText="Player 1"
     }
 
-    else    /*otherwise*/
+    else if (p1count==p2count)   /*otherwise*/
     {
         scoreKeeper.innerText="Tie"
     }
@@ -81,26 +81,29 @@ function up1()
     if (p1count==15)    /*when player 1 hits 15*/
     {
         alert("Player 1 is the winner.");
+        changeLeft.innerText=p1count;
 
-        /*reset the input counts and resets scoreboard*/
+        /*  reset the input counts and resets scoreboard*/
         p1count=0;
         p2count=0;
         changeLeft.innerText=0;
         changeRight.innerText=0;
         scoreKeeper.innerText='';
     }
+
 }
 
 function up2()
 {
     p2count++;
     changeRight.innerText=p2count;
+
     if (p2count>p1count)   /*when player 2 leads*/
     {
-        scoreKeeper.innerText="Player 1"
+        scoreKeeper.innerText="Player 2"
     }
 
-    else
+    else if (p2count==p1count)
     {
         scoreKeeper.innerText="Tie"
     }
@@ -138,8 +141,8 @@ function turnOnKeyboard()
 {
     addEventListener('keydown',readKeyboard);     /*turns on keyboard commands*/
                /*turns off the P1 and P2 buttons*/
-    buttonp1.removeEventListener('click',up1);
-    buttonp2.removeEventListener('click',up2);
+    buttonp1.setAttribute('disabled',true);
+    buttonp2.setAttribute('disabled',true);
     clicking.removeAttribute('disabled');           /*ungrays the clicking button*/
     pandQ.setAttribute('disabled',true);       /*grays out the  p and q button*/
 }
@@ -147,8 +150,8 @@ function turnOnKeyboard()
 function turnOffKeyboard()
 {
     /*turns the P1 and P2 buttons back on*/
-    buttonp1.addEventListener('click',up1);
-    buttonp2.addEventListener('click',up2);
+    buttonp1.removeAttribute('disabled');
+    buttonp2.removeAttribute('disabled');
     removeEventListener('keydown',readKeyboard);
     pandQ.removeAttribute('disabled');
     clicking.setAttribute('disabled',true);
@@ -156,18 +159,17 @@ function turnOffKeyboard()
 
 function readKeyboard(e) {
 
-    if (e.code === 'KeyP')   /*reads player 1's key*/
+    if (e.code === 'KeyQ')   /*reads player 1's key*/
     {
         up1()  /*calls scorekeeping for player 1*/
 
-    } else if (e.code === 'KeyQ')   /*reads player 2's key*/
+    } else if (e.code === 'KeyP')   /*reads player 2's key*/
     {
         up2()   /*calls scorekeeping for player 2*/
 
 
     }
 }
-
 
 
 
