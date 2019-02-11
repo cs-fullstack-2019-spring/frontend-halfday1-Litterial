@@ -1,4 +1,5 @@
 var background=document.getElementById('backbone');
+var scoreKeeper=document.getElementById('score');
 
 
 
@@ -64,12 +65,31 @@ function up1()
 
     p1count++;
     changeLeft.innerText=p1count;
+
+    if (p1count>p2count)
+    {
+        scoreKeeper.innerText="Player 1"
+    }
+
+    else
+    {
+        scoreKeeper.innerText="Tie"
+    }
 }
 
 function up2()
 {
     p2count++;
     changeRight.innerText=p2count;
+    if (p2count>p1count)
+    {
+        scoreKeeper.innerText="Player 1"
+    }
+
+    else
+    {
+        scoreKeeper.innerText="Tie"
+    }
 }
 
 
