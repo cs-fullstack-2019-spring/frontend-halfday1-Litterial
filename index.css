@@ -1,0 +1,60 @@
+
+body
+{
+ margin: 2% 7%;
+}
+h1
+{
+    text-align: center;
+
+}
+
+.container
+{
+    display:grid;
+    margin:0% 10%;
+    text-align: center;
+}
+
+aside
+{
+ grid-column: 1/4;
+    grid-row: 1/6;
+    font-size: 80px;
+
+}
+
+section
+{
+grid-column:4/7;
+    grid-row:1/6;
+    font-size: 80px;
+
+}
+
+nav
+{
+    grid-column: 7/10;
+    grid-row:1/6;
+    font-size: 80px;
+}
+
+footer
+{
+ grid-column:1/4;
+    grid-row: 6/8;
+    font-size:50px;
+}
+
+article
+{
+    grid-column:7/10;
+    grid-row:6/8;
+    font-size:50px;
+}
+
+.input
+{
+   height:40px;
+    width:200px;
+}
