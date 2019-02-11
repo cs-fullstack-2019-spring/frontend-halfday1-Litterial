@@ -75,6 +75,16 @@ function up1()
     {
         scoreKeeper.innerText="Tie"
     }
+
+    if (p1count==15)
+    {
+        alert("Player 1 is the winner.");
+        p1count=0;
+        p2count=0;
+        changeLeft.innerText=0;
+        changeRight.innerText=0;
+        scoreKeeper.innerText='';
+    }
 }
 
 function up2()
@@ -90,6 +100,18 @@ function up2()
     {
         scoreKeeper.innerText="Tie"
     }
+
+    if(p2count==15)
+    {
+        alert("Player 2 is the winner.");
+        p1count=0;
+        p2count=0;
+        changeLeft.innerText=0;
+        changeRight.innerText=0;
+        scoreKeeper.innerText='';
+    }
+
+
 }
 
 
