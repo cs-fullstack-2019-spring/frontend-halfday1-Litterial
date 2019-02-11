@@ -3,7 +3,6 @@ var background=document.getElementById('backbone');
 
 
 
-
 /*defining ids for background buttons*/
 var changeBlue=document.getElementById('blueB');
 var changeRed=document.getElementById('redB');
@@ -80,15 +79,22 @@ function up1()
 
     if (p1count==15)    /*when player 1 hits 15*/
     {
-        alert("Player 1 is the winner.");
-        changeLeft.innerText=p1count;
+        disableAll();  /*calls turn off function*/
+
+        setTimeout(function()   /*delays the alert funcction*/
+            {
+                alert("Player 1 is the winner.");  /*alerts winner and resests everything*/
+                p1count=0;
+                p2count=0;
+                changeLeft.innerText=0;
+                changeRight.innerText=0;
+                scoreKeeper.innerText='';
+                enableAll();              /*re-enable everthing*/
+
+                },250)
 
         /*  reset the input counts and resets scoreboard*/
-        p1count=0;
-        p2count=0;
-        changeLeft.innerText=0;
-        changeRight.innerText=0;
-        scoreKeeper.innerText='';
+
     }
 
 }
@@ -110,14 +116,19 @@ function up2()
 
     if(p2count==15)
     {
-        alert("Player 2 is the winner.");
+        disableAll();
 
-        /*reset the input counts and resets scoreboard*/
-        p1count=0;
-        p2count=0;
-        changeLeft.innerText=0;
-        changeRight.innerText=0;
-        scoreKeeper.innerText='';
+        setTimeout(function()
+        {
+            alert("Player 2 is the winner.");
+            p1count=0;
+            p2count=0;
+            changeLeft.innerText=0;
+            changeRight.innerText=0;
+            scoreKeeper.innerText='';
+            enableAll();
+
+        },250)
     }
 
 
@@ -172,5 +183,19 @@ function readKeyboard(e) {
 }
 
 
+function disableAll()  /*turns off everything*/
+{
+    buttonp1.setAttribute('disabled',true);
+    buttonp2.setAttribute('disabled',true);
+    removeEventListener('keydown',readKeyboard);
+    clicking.setAttribute('disabled',true);
+    pandQ.setAttribute('disabled',true);
+}
 
+function enableAll()  /*turns everything back on expect the p and q functions. Click is on by default*/
+{
+    buttonp1.removeAttribute('disabled');
+    buttonp2.removeAttribute('disabled');
 
+    pandQ.removeAttribute('disabled');
+}
